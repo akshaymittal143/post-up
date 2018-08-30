@@ -1,0 +1,48 @@
+Java Generated
+*.class
+*.jar
+*.war
+*.ear
+
+
+# Gradle
+*/.gradle/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+
+# Compiler
+*/bin/
+*/build/
+*/targer/
+*/out/
+
+
+# IntelliJ Generated
+.idea/
+*.iws
+*.iml
+*.ipr
+
+
+# Front End Dependency Generated
+client/.sass-cache/
+client/bower_components/
+client/npm-debug.log
+client/.tscache/
+client/scss/.tmp/
+client/js/lib/
+client/typings/
+client/coverage/
+*/tmp/
+*/out-tsc/
+
+client/dist/
+client/node/
+client/node/*
+*/node_modules/
+dist/
+
+
+# Application
+backend/src/main/resources/static
