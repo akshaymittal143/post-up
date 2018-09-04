@@ -10,6 +10,10 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/*
+  using toString, equals, hashCode to remove getter and setter.
+ */
+
 @Document
 @Data
 @ToString
