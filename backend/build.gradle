@@ -33,6 +33,6 @@ dependencies {
 //	// https://mvnrepository.com/artifact/com.zsoltfabok/sqlite-dialect
 	compile group: 'com.zsoltfabok', name: 'sqlite-dialect', version: '1.0'
 //
-//	compileOnly('org.projectlombok:lombok')
+	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
