@@ -23,6 +23,7 @@ Java Generated
 *.iws
 *.iml
 *.ipr
+.DS_Store
 
 
 # Front End Dependency Generated
