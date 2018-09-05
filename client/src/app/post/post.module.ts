@@ -7,12 +7,13 @@ import { PostFormComponent } from './post-form/post-form.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { SearchPostComponent } from './search-post/search-post.component';
 
 @NgModule({
   imports: [
     CommonModule,
     PostRoutingModule
   ],
-  declarations: [PostListComponent, PostFormComponent, NewPostComponent, EditPostComponent, PostDetailsComponent]
+  declarations: [PostListComponent, PostFormComponent, NewPostComponent, EditPostComponent, PostDetailsComponent, SearchPostComponent]
 })
 export class PostModule { }
