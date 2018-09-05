@@ -1,32 +1,30 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { Post } from "../model/post";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Post } from '../model/post';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   })
 };
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class PostService {
-  baseUrl = "http://localhost:8080/api/posts";
-
   constructor(private http: HttpClient) {}
 
   getPosts() {
-    return this.http.get(this.baseUrl);
+    return this.http.get('/server/api/posts');
   }
 
   getPost(id: number) {
-    return this.http.get(this.baseUrl + "/" + id);
+    return this.http.get('/server/api/posts' + '/' + id);
   }
 
   createPost(post) {
     const body = JSON.stringify(post);
-    return this.http.post(this.baseUrl, body, httpOptions);
+    return this.http.post('/server/api/posts', body, httpOptions);
   }
 }
