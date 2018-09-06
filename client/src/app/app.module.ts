@@ -9,9 +9,21 @@ import { PostRoutingModule } from './post/post-routing.module';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { PostModule } from './post/post.module';
 
+import { MaterialModule } from './shared/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, PostRoutingModule, HttpClientModule, PostModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    PostRoutingModule,
+    HttpClientModule,
+    PostModule,
+    BrowserAnimationsModule,
+    MaterialModule
+  ],
   providers: [PostService],
   bootstrap: [AppComponent]
 })

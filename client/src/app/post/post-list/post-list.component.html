@@ -1,12 +1,57 @@
 <div class="list-group">
+  <div>
+    <mat-toolbar color="primary">
+      <span>
+        <mat-icon>mood</mat-icon>
+      </span>
 
-  <a *ngFor="let post of posts" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{post.title}}</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">{{post.content}}</p>
-    <small>read more...</small>
-  </a>
+      <span>Post List!</span>
+
+      <button mat-icon-button [mat-menu-trigger-for]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-menu x-position="right" #menu="matMenu">
+      <button mat-menu-item>Something soon</button>
+    </mat-menu>
+    <button mat-fab (click)="addPost()" class="fab-bottom-right">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-card *ngFor="let post of posts">
+      <mat-card-header>
+        <mat-card-title>
+          <h1 class="mat-heading">{{post.title}}</h1>
+        </mat-card-title>
+        <mat-card-subtitle>{{post.id}}</mat-card-subtitle>
+      </mat-card-header>
+      <!-- <img matCardImage src="Card wide image source"> -->
+      <mat-card-content>
+        {{post.content}}
+      </mat-card-content>
+      <mat-card-actions align="start">
+        <a mat-button [routerLink]="['/post', 'edit', post.id]">
+          edit
+        </a>
+        <a mat-button [routerLink]="['/post', 'view', post.id]">view</a>
+      </mat-card-actions>
+      <!-- <mat-card-footer>
+      Footer
+    </mat-card-footer> -->
+    </mat-card>
+
+    <mat-card>
+      <button mat-button>All</button>
+      <button mat-raised-button>Previous</button>
+      <button mat-raised-button color="primary">Next</button>
+    </mat-card>
+
+    <!-- <span class="done">
+    <button mat-fab>
+      <mat-icon>check circle</mat-icon>
+    </button>
+  </span> -->
+  </div>
+
+
 
 </div>
