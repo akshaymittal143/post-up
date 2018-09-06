@@ -6,10 +6,11 @@ import com.backend.akshayproject.model.Post;
 import com.backend.akshayproject.repository.PostRepository;
 import java.util.List;
 import java.util.Optional;
-import javafx.geometry.Pos;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/posts")
+@CrossOrigin("/*")
 public class PostController {
 
   @Autowired
@@ -37,14 +39,13 @@ public class PostController {
   public Optional<Post> get(@PathVariable("id") long id) {
     return postRepository.findById(id);
   }
+  //no optional
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public Post create(@RequestBody Post post) {
-
-    Post _post = postRepository.save(new Post(post.getId(),post.getTitle(), post.getContent()));
-    return _post;
-  }
+    return postRepository.save(post);
+    }
 
   @PutMapping("/{id}")
   public ResponseEntity<Post> updatePost(@PathVariable("id") long id, @RequestBody Post post) {

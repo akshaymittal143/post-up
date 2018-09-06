@@ -21,7 +21,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(PostNotFoundException.class)
   protected ResponseEntity<Object> handleNotFound(Exception ex, WebRequest request) {
-    return handleExceptionInternal(ex, "Book not found", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    return handleExceptionInternal(ex, "Post not found", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
   }
 
   @ExceptionHandler({
