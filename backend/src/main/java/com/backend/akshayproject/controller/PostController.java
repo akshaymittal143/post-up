@@ -36,47 +36,33 @@ public class PostController {
   }
 
   @GetMapping("/{id}")
-  public Optional<Post> get(@PathVariable("id") long id) {
-    return postRepository.findById(id);
+  public ResponseEntity<Post> get(@PathVariable("id") long id) {
+    return new ResponseEntity(postRepository.findById(id), HttpStatus.OK);
   }
-  //no optional
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public Post create(@RequestBody Post post) {
+  public Post create(@RequestBody @Valid Post post) {
     return postRepository.save(post);
-    }
+  }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Post> updatePost(@PathVariable("id") long id, @RequestBody Post post) {
+  public ResponseEntity updatePost(@PathVariable("id") long id,
+      @RequestBody @Valid Post post) {
 
     System.out.println("Update Post with ID = " + id + "...");
-    Optional<Post> p = postRepository.findById(id);
-
-    if(p.isPresent()) {
-      Post _post = p.get();
-      _post.setTitle(post.getTitle());
-      _post.setContent(post.getContent());
-      return new ResponseEntity(postRepository.save(_post), HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+    return postRepository.findById(id)
+        .map(p -> {
+          p.setContent(post.getContent());
+          p.setTitle(post.getTitle());
+          return new ResponseEntity(postRepository.save(p), HttpStatus.OK);
+        }).orElse(new ResponseEntity(HttpStatus.NOT_FOUND));
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<String> deletePost(@PathVariable("id") long id){
+  public ResponseEntity<String> deletePost(@PathVariable("id") long id) {
     System.out.println("Delete Post with ID = " + id + "...");
-
     postRepository.deleteById(id);
     return new ResponseEntity<>("Post has been deleted!!", HttpStatus.OK);
   }
-
-  @DeleteMapping("/delete")
-  public ResponseEntity<String> deleteAllPost(){
-    System.out.println("Delete All Posts...");
-
-    postRepository.deleteAll();
-    return new ResponseEntity<>("All posts have been deleted!!", HttpStatus.OK);
-  }
-
 }
