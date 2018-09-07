@@ -19,6 +19,14 @@ import { MaterialModule } from '../shared/material.module';
     EditPostComponent,
     PostDetailsComponent,
     SearchPostComponent
+  ],
+  exports: [
+    PostListComponent,
+    PostFormComponent,
+    NewPostComponent,
+    EditPostComponent,
+    PostDetailsComponent,
+    SearchPostComponent
   ]
 })
 export class PostModule {}
