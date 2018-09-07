@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { HomeComponent } from './home/home.component';
+import { PageNonfoundComponent } from './home/page-nonfound/page-nonfound.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'posts',
     component: PostListComponent
+  },
+  {
+    path: '**',
+    component: PageNonfoundComponent
   }
 ];
 
