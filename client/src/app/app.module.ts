@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,11 +21,13 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
     AppRoutingModule,
     PostRoutingModule,
-    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     PostModule,
     HomeModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

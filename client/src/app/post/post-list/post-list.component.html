@@ -1,3 +1,4 @@
+
 <div class="list-group">
   <div>
     <mat-toolbar color="primary">
@@ -5,7 +6,7 @@
         <mat-icon>mood</mat-icon>
       </span>
 
-      <span>Post List!</span>
+      <span class="col-lg-2">Post List!</span>
 
       <button mat-icon-button [mat-menu-trigger-for]="menu">
         <mat-icon>more_vert</mat-icon>
@@ -14,9 +15,7 @@
     <mat-menu x-position="right" #menu="matMenu">
       <button mat-menu-item>Something soon</button>
     </mat-menu>
-    <button mat-fab (click)="addPost()" class="fab-bottom-right">
-      <mat-icon>add</mat-icon>
-    </button>
+    <app-new-post></app-new-post>
     <mat-card *ngFor="let post of posts">
       <mat-card-header>
         <mat-card-title>
