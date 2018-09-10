@@ -1,17 +1,20 @@
 <h1 mat-dialog-title>Add a new Post {{data.id}}</h1>
-<div mat-dialog-content>
-  <label>Enter a title?</label>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.title" title="new post">
-  </mat-form-field>
-</div>
-<div mat-dialog-content>
-  <label>Enter the Content?</label>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.content" title="new content">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
+<mat-dialog-content>
+  <form [formGroup]="newPost" (ngSubmit)="addPost()" novalidate>
+    <div *ngIf="validMessage != ''">
+      <h3 class="has-info">{{validMessage}}</h3>
+    </div>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" formControlName="title" required autofocus/>
+    </div>
+    <div class="form-group">
+      <label>Content</label>
+      <input type="text" class="form-control" formControlName="content" required/>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="addPost()" [mat-dialog-close]="data.title" >Ok</button>
-</div>
+  <button mat-button (click)="addPost()" type="submit" class="btn btn-primary" [mat-dialog-close]="data.title">Submit</button>
+</mat-dialog-actions>

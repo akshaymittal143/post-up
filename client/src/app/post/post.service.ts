@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RequestOptions } from '@angular/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { Post } from '../model/post';
@@ -40,7 +41,7 @@ export class PostService {
     return this.http.get('/server/api/posts' + '/' + id);
   }
 
-  createPost(newpost: Post): Observable<Post> {
+  createPost(newpost: Post) {
     console.log('Created Post is Started!!!');
     const body = JSON.stringify(newpost);
     return this.http.post('/server/api/posts', body, httpOptions).pipe(

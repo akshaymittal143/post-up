@@ -27,8 +27,4 @@ public class Post {
   @NotNull
   @Column(name = "content")
   private String content;
-
-  //mark final
-  //immutable objects research - entity does not have to e
-
 }

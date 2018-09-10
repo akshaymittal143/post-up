@@ -1,11 +1,8 @@
 package com.backend.akshayproject.controller;
 
-import com.backend.akshayproject.exception.PostIdMismatchException;
-import com.backend.akshayproject.exception.PostNotFoundException;
 import com.backend.akshayproject.model.Post;
 import com.backend.akshayproject.repository.PostRepository;
 import java.util.List;
-import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/posts")
-@CrossOrigin("/*")
+@CrossOrigin(value = "*", maxAge = 3600)
 public class PostController {
 
   @Autowired
@@ -37,7 +34,12 @@ public class PostController {
 
   @GetMapping("/{id}")
   public ResponseEntity<Post> get(@PathVariable("id") long id) {
-    return new ResponseEntity(postRepository.findById(id), HttpStatus.OK);
+    try {
+      return new ResponseEntity(postRepository.findById(id), HttpStatus.OK);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
   }
 
   @PostMapping
