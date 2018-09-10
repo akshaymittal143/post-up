@@ -1,3 +1,19 @@
-<p>
-  new-post works!
-</p>
+
+  <!--<li>-->
+    <!--<mat-form-field>-->
+      <!--<input matInput [(ngModel)]="name" placeholder="What's your name?">-->
+    <!--</mat-form-field>-->
+  <!--</li>-->
+<div class="new-post">
+  <button mat-fab (click)="openDialog()" class="fab-bottom-right">
+    <mat-icon>add</mat-icon>
+  </button>
+  <p *ngIf="title">
+    You have added a new Post: <i>{{title}}</i>
+  </p>
+</div>
+
+
+
+
+

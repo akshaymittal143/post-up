@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { PostService } from '../post.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PostService } from '../post.service';
 export class PostListComponent implements OnInit {
   public posts;
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private vcr: ViewContainerRef) {}
 
   ngOnInit() {
     this.getPosts();
@@ -20,4 +20,6 @@ export class PostListComponent implements OnInit {
       .getPosts()
       .subscribe(data => (this.posts = data), err => console.error(err), () => console.log('Posts loaded!!!'));
   }
+
+  addPost() {}
 }

@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { PageNonfoundComponent } from './page-nonfound/page-nonfound.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HomeRoutingModule
-  ],
-  declarations: [HomeComponent]
+  imports: [CommonModule, HomeRoutingModule],
+  declarations: [HomeComponent, PageNonfoundComponent],
+  exports: [HomeComponent, PageNonfoundComponent]
 })
-export class HomeModule { }
+export class HomeModule {}

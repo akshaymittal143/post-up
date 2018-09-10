@@ -9,13 +9,11 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Post {
 
   @Id
@@ -29,5 +27,4 @@ public class Post {
   @NotNull
   @Column(name = "content")
   private String content;
-
 }
