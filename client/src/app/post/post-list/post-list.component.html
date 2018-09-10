@@ -1,4 +1,3 @@
-
 <div class="list-group">
   <div>
     <mat-toolbar color="primary">
@@ -28,10 +27,11 @@
         {{post.content}}
       </mat-card-content>
       <mat-card-actions align="start">
-        <a mat-button [routerLink]="['/post', 'edit', post.id]">
+        <a mat-button [routerLink]="['/', 'edit-post', post.id]">
           edit
         </a>
-        <a mat-button [routerLink]="['/post', 'view', post.id]">view</a>
+        <a mat-button [routerLink]="['/', 'view-post', post.id]">
+          view</a>
       </mat-card-actions>
       <!-- <mat-card-footer>
       Footer
@@ -50,7 +50,6 @@
     </button>
   </span> -->
   </div>
-
 
 
 </div>
