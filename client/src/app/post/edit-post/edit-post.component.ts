@@ -1,6 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { InputDecorator } from '@angular/core/src/metadata/directives';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Post } from '../../model/post';
@@ -12,10 +11,10 @@ import { PostService } from '../post.service';
   styleUrls: ['./edit-post.component.css']
 })
 export class EditPostComponent implements OnInit {
+  @Input()
   postDetail;
   validMessage = '';
-
-  constructor(private postService: PostService, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private postService: PostService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.getPost(this.route.snapshot.params.id);

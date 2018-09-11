@@ -30,15 +30,14 @@
   </div>
   <mat-card-content>
     <div class="container">
-      <form (ngSubmit)="updatePost()" #edit="ngForm">
-        <div class="form-group">
+      <form (ngSubmit)="updatePost()" #edit="ngForm" *ngIf="postDetail">
+        <div class="form-group" >
           <label for="_title">Title</label>
-          <input type="text" class="form-control" id="_title" [(ngModel)]="postDetail.title" name="title" required/>
+          <input type="text" class="form-control" id="_title" [(ngModel)]="postDetail.title" name="title"  required/>
         </div>
         <div>
           <label for="_content">Content</label>
-          <input type="text" class="form-control" id="_content" [(ngModel)]="postDetail.content" name="content"
-                 required/>
+          <input type="text" class="form-control" id="_content" [(ngModel)]="postDetail.content" name="content" required/>
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
       </form>
