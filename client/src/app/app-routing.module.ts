@@ -6,6 +6,8 @@ import { PostDetailsComponent } from './post/post-details/post-details.component
 import { PostListComponent } from './post/post-list/post-list.component';
 import { HomeComponent } from './home/home.component';
 import { PageNonfoundComponent } from './home/page-nonfound/page-nonfound.component';
+import { PostComponent } from './post/post.component';
+import { PostModule } from './post/post.module';
 
 const routes: Routes = [
   {
@@ -18,16 +20,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'posts',
-    component: PostListComponent
-  },
-  {
-    path: 'view-post/:id',
-    component: PostDetailsComponent
-  },
-  {
-    path: 'edit-post/:id',
-    component: EditPostComponent
+    path: 'post',
+    loadChildren: './post/post.module#PostModule'
   },
   {
     path: '**',
@@ -36,7 +30,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

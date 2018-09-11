@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostListComponent } from './post/post-list/post-list.component';
+import { PostComponent } from './post/post.component';
 import { PostService } from './post/post.service';
 import { PostRoutingModule } from './post/post-routing.module';
 import { PostModule } from './post/post.module';
@@ -18,17 +20,19 @@ import { HomeModule } from './home/home.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     PostModule,
     HomeModule,
-    BrowserAnimationsModule,
+    PostModule,
+    HomeModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule
   ],
-  providers: [PostService],
+  // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
