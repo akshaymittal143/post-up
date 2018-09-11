@@ -36,7 +36,9 @@ import {
   MatTableModule,
   MatTabsModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
+  MatFormField,
+  MatFormFieldModule
 } from '@angular/material';
 
 @NgModule({
@@ -58,6 +60,7 @@ import {
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
+    MatFormFieldModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
@@ -97,6 +100,7 @@ import {
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
+    MatFormFieldModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,

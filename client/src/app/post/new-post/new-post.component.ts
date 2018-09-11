@@ -9,6 +9,7 @@ import { NewPostDialogComponent } from './new-post-dialog/new-post-dialog.compon
 export class NewPostComponent {
   content: string;
   title: string;
+
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {

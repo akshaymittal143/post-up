@@ -29,7 +29,6 @@ export class PostService {
       if (error.status >= 500) {
         throw error;
       }
-
       return of(result as T);
     };
   }
@@ -72,9 +71,8 @@ export class PostService {
   }
 
   deletePost(id: number) {
-    return this.http.delete('/server/api/posts/' + id, httpOptions).pipe(
-      tap(() => LoggerService.log('deleted the post by id: ' + id)),
-      catchError(PostService.handleError<Post>('deletePostById'))
-    );
+    return this.http
+      .delete('/server/api/posts/' + id, httpOptions)
+      .subscribe(() => console.log('successfully deleted the post: ' + id), err => console.log(err));
   }
 }
