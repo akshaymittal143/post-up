@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from '../../model/post';
 import { PostService } from '../post.service';
-import { PostListComponent } from '../post-list/post-list.component';
 
 @Component({
   selector: 'app-post-details',
@@ -11,8 +9,6 @@ import { PostListComponent } from '../post-list/post-list.component';
 })
 export class PostDetailsComponent implements OnInit {
   public postDetail;
-
-  // @Input() post: Post;
   constructor(private postService: PostService, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -25,7 +21,7 @@ export class PostDetailsComponent implements OnInit {
         this.postDetail = data;
       },
       err => console.log(err),
-      () => console.log('Post loaded: id' + id)
+      () => console.log('Post loaded: id ' + id)
     );
   }
 }

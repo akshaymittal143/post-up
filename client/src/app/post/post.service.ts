@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestOptions } from '@angular/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/internal/operators';
+import { catchError, combineAll, tap } from 'rxjs/internal/operators';
 import { Post } from '../model/post';
 import { LoggerService } from '../shared/logger.service';
 
@@ -33,12 +33,19 @@ export class PostService {
       return of(result as T);
     };
   }
+
   getPosts() {
-    return this.http.get('/server/api/posts');
+    return this.http.get('/server/api/posts').pipe(
+      tap(() => LoggerService.log('fetched all posts!!')),
+      catchError(PostService.handleError<Post>('fetchAllPosts'))
+    );
   }
 
   getPost(id: number) {
-    return this.http.get('/server/api/posts' + '/' + id);
+    return this.http.get('/server/api/posts' + '/' + id).pipe(
+      tap(() => LoggerService.log('fetch post by id: ' + id)),
+      catchError(PostService.handleError<Post>('fetchById'))
+    );
   }
 
   createPost(newpost: Post) {
@@ -46,9 +53,28 @@ export class PostService {
     const body = JSON.stringify(newpost);
     return this.http.post('/server/api/posts', body, httpOptions).pipe(
       tap((postSaved: Post) => {
-        LoggerService.log(`added hero w/ id=${postSaved.id}`);
+        LoggerService.log(`added post w/ id=${postSaved.id}`);
       }),
       catchError(PostService.handleError<Post>('addPost'))
+    );
+  }
+
+  updatePost(updatedPost: Post) {
+    const body = JSON.stringify(updatedPost);
+    console.log(body);
+    console.log('/server/api/posts/' + updatedPost.id);
+    return this.http
+      .put('/server/api/posts/' + updatedPost.id, body, httpOptions)
+      .subscribe(
+        () => console.log('successfully updated the post by id:' + updatedPost.id),
+        catchError(PostService.handleError<Post>('updated Post!!'))
+      );
+  }
+
+  deletePost(id: number) {
+    return this.http.delete('/server/api/posts/' + id, httpOptions).pipe(
+      tap(() => LoggerService.log('deleted the post by id: ' + id)),
+      catchError(PostService.handleError<Post>('deletePostById'))
     );
   }
 }

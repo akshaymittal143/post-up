@@ -1,3 +1,47 @@
-<p>
-  edit-post works!
-</p>
+<mat-toolbar color="primary">
+      <span>
+        <mat-icon>mood</mat-icon>
+      </span>
+
+  <span class="col-lg-2">Post Details</span>
+  <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="right" #menu="matMenu">
+  <button mat-menu-item>Something soon</button>
+</mat-menu>
+<mat-divider></mat-divider>
+<h1>
+  Edit Post Page!!!
+</h1>
+<div class="row">
+  <button mat-mini-fab color="primary" routerLink="/posts">Back</button>
+</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1 class="mat-heading">{{postDetail?.title}}</h1>
+    </mat-card-title>
+    <mat-card-subtitle>{{postDetail?.id}}</mat-card-subtitle>
+  </mat-card-header>
+  <div *ngIf="validMessage != ''">
+    <h3 class="has-info">{{validMessage}}</h3>
+  </div>
+  <mat-card-content>
+    <div class="container">
+      <form (ngSubmit)="updatePost()" #edit="ngForm">
+        <div class="form-group">
+          <label for="_title">Title</label>
+          <input type="text" class="form-control" id="_title" [(ngModel)]="postDetail.title" name="title" required/>
+        </div>
+        <div>
+          <label for="_content">Content</label>
+          <input type="text" class="form-control" id="_content" [(ngModel)]="postDetail.content" name="content"
+                 required/>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

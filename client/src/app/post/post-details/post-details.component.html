@@ -22,12 +22,14 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      <h1 class="mat-heading">{{postDetail.title}}</h1>
+      <h1 class="mat-heading">{{postDetail?.title}}</h1>
     </mat-card-title>
-    <mat-card-subtitle>{{postDetail.id}}</mat-card-subtitle>
+    <mat-card-subtitle>{{postDetail?.id}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
-   {{postDetail.content}}
+    <p>
+    {{postDetail?.content}}
+    </p>
   </mat-card-content>
 </mat-card>
