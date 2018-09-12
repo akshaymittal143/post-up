@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainComponent } from './home/main/main.component';
 import { EditPostComponent } from './post/edit-post/edit-post.component';
 import { NewPostComponent } from './post/new-post/new-post.component';
 import { PostDetailsComponent } from './post/post-details/post-details.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'main',
+    component: MainComponent
   },
   {
     path: 'post',
