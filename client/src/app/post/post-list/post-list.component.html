@@ -1,22 +1,23 @@
-<div class="list-group">
+
+
   <div>
-    <mat-toolbar color="primary">
-      <span>
-        <mat-icon>mood</mat-icon>
-      </span>
-      <span class="col-lg-2">Post List!</span>
-      <button mat-icon-button [mat-menu-trigger-for]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-menu x-position="right" #menu="matMenu">
-      <button mat-menu-item>Something soon</button>
-    </mat-menu>
-    <div align="right">
+    <!--<mat-toolbar color="primary">-->
+      <!--<span>-->
+        <!--<mat-icon>mood</mat-icon>-->
+      <!--</span>-->
+      <!--<span class="col-lg-2">Post List!</span>-->
+      <!--<button mat-icon-button [mat-menu-trigger-for]="menu">-->
+        <!--<mat-icon>more_vert</mat-icon>-->
+      <!--</button>-->
+    <!--</mat-toolbar>-->
+    <!--<mat-menu x-position="right" #menu="matMenu">-->
+      <!--<button mat-menu-item>Something soon</button>-->
+    <!--</mat-menu>-->
+    <div class="col-md-12">
       <app-new-post></app-new-post>
     </div>
     <!--Post List using mat card-->
-    <mat-card *ngFor="let post of posts">
+    <mat-card *ngFor="let post of posts" class="cdk-global-scrollblock">
       <mat-card-header>
         <mat-card-title>
           <h1 class="mat-heading">{{post.title}}</h1>
@@ -54,4 +55,4 @@
   </div>
 
 
-</div>
+<
