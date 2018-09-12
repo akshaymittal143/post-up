@@ -73,6 +73,9 @@ export class PostService {
   deletePost(id: number) {
     return this.http
       .delete('/server/api/posts/' + id, httpOptions)
-      .subscribe(() => console.log('successfully deleted the post: ' + id), err => console.log(err));
+      .subscribe(
+        () => console.log('successfully deleted the post: ' + id),
+        err => console.log('you have an error during http delete: ' + err)
+      );
   }
 }
