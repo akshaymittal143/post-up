@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post } from '../../model/post';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../post.service';
-import { PostListComponent } from '../post-list/post-list.component';
 
 @Component({
   selector: 'app-post-details',
@@ -9,12 +8,20 @@ import { PostListComponent } from '../post-list/post-list.component';
   styleUrls: ['./post-details.component.css']
 })
 export class PostDetailsComponent implements OnInit {
-
-  @Input() post: Post;
-  constructor(private postService: PostService,
-  private listComponent: PostListComponent) { }
+  public postDetail;
+  constructor(private postService: PostService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.getPost(this.route.snapshot.params.id);
   }
 
+  getPost(id: number) {
+    this.postService.getPost(id).subscribe(
+      data => {
+        this.postDetail = data;
+      },
+      err => console.log(err),
+      () => console.log('Post loaded: id ' + id)
+    );
+  }
 }

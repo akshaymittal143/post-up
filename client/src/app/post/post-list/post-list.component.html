@@ -1,13 +1,10 @@
-
 <div class="list-group">
   <div>
     <mat-toolbar color="primary">
       <span>
         <mat-icon>mood</mat-icon>
       </span>
-
       <span class="col-lg-2">Post List!</span>
-
       <button mat-icon-button [mat-menu-trigger-for]="menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -15,7 +12,10 @@
     <mat-menu x-position="right" #menu="matMenu">
       <button mat-menu-item>Something soon</button>
     </mat-menu>
-    <app-new-post></app-new-post>
+    <div align="right">
+      <app-new-post></app-new-post>
+    </div>
+    <!--Post List using mat card-->
     <mat-card *ngFor="let post of posts">
       <mat-card-header>
         <mat-card-title>
@@ -28,14 +28,16 @@
         {{post.content}}
       </mat-card-content>
       <mat-card-actions align="start">
-        <a mat-button [routerLink]="['/post', 'edit', post.id]">
-          edit
+        <a mat-raised-button color="primary" [routerLink]="['/', 'edit-post', post.id]">
+          Edit
         </a>
-        <a mat-button [routerLink]="['/post', 'view', post.id]">view</a>
+        <a mat-raised-button color="primary" [routerLink]="['/', 'view-post', post.id]">
+          View</a>
+        <button (click)="deletePost(post.id)" mat-raised-button color="warn">Delete</button>
       </mat-card-actions>
-      <!-- <mat-card-footer>
-      Footer
-    </mat-card-footer> -->
+      <!--<mat-card-footer>-->
+      <!--Footer-->
+    <!--</mat-card-footer>-->
     </mat-card>
 
     <mat-card>
@@ -50,7 +52,6 @@
     </button>
   </span> -->
   </div>
-
 
 
 </div>

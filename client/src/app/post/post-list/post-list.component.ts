@@ -9,7 +9,7 @@ import { PostService } from '../post.service';
 export class PostListComponent implements OnInit {
   public posts;
 
-  constructor(private postService: PostService, private vcr: ViewContainerRef) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.getPosts();
@@ -21,5 +21,9 @@ export class PostListComponent implements OnInit {
       .subscribe(data => (this.posts = data), err => console.error(err), () => console.log('Posts loaded!!!'));
   }
 
-  addPost() {}
+  deletePost(id: number) {
+    console.log('post to be deleted:' + id);
+    this.postService.deletePost(id);
+    this.getPosts();
+  }
 }

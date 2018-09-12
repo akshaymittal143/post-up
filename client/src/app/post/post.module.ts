@@ -9,13 +9,16 @@ import { PostFormComponent } from './post-form/post-form.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { PostService } from './post.service';
 import { SearchPostComponent } from './search-post/search-post.component';
 import { MaterialModule } from '../shared/material.module';
+import { PostComponent } from './post.component';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, PostRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, PostRoutingModule, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [NewPostComponent, NewPostDialogComponent],
   declarations: [
+    PostComponent,
     PostListComponent,
     PostFormComponent,
     NewPostComponent,
@@ -25,6 +28,7 @@ import { MaterialModule } from '../shared/material.module';
     SearchPostComponent
   ],
   exports: [
+    PostComponent,
     PostListComponent,
     PostFormComponent,
     NewPostComponent,
@@ -32,6 +36,7 @@ import { MaterialModule } from '../shared/material.module';
     EditPostComponent,
     PostDetailsComponent,
     SearchPostComponent
-  ]
+  ],
+  providers: [PostService]
 })
 export class PostModule {}

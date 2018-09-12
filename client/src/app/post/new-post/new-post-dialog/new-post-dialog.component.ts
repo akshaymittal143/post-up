@@ -20,6 +20,7 @@ export class NewPostDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Post,
     private postService: PostService
   ) {}
+
   ngOnInit() {
     this.newPost = new FormGroup({
       title: new FormControl('', Validators.required),
@@ -27,23 +28,26 @@ export class NewPostDialogComponent implements OnInit {
     });
   }
 
+  reloadAllPost() {
+    this.postService.getPosts();
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   addPost() {
-    console.log('add post is trigged!');
+    console.log('add post is added!');
     console.log(this.newPost.value);
     if (this.newPost.valid) {
       this.validMessage = 'your new post has submitted!!';
       this.postService.createPost(this.newPost.value).subscribe(
         data => {
           this.newPost.reset();
+          this.reloadAllPost();
           return true;
         },
-        error2 => {
-          return Observable.throw(error2);
-        }
+        err => console.log(err)
       );
     } else {
       this.validMessage = 'Please fill out the form before submitting!!';
