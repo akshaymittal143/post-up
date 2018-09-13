@@ -33,8 +33,9 @@ export class NewPostDialogComponent implements OnInit {
   }
 
   reloadPage() {
-    this.router.navigateByUrl('/posts');
-    console.log('post list page reloaded!!');
+    if (this.router.navigateByUrl('/posts')) {
+      console.log('post list page reloaded!!');
+    }
   }
 
   addPost() {
@@ -47,11 +48,10 @@ export class NewPostDialogComponent implements OnInit {
           this.newPost.reset();
           if (data) {
             this.dialogRef.afterClosed().subscribe(() => {
-              console.log('post was addded!');
+              console.log('post was added!');
               this.reloadPage();
             });
           }
-          return true;
         },
         err => console.log(err)
       );

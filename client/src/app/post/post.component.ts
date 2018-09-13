@@ -17,7 +17,7 @@ export class PostComponent implements OnInit, OnDestroy {
   }
 
   intialiseInvites() {
-    //defailts
+    this.router.onSameUrlNavigation = 'reload';
   }
 
   ngOnInit() {}
