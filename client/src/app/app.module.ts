@@ -2,7 +2,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CovalentLayoutModule, CovalentStepsModule } from '@covalent/core';
+import {
+  CovalentLayoutModule,
+  CovalentNotificationsModule,
+  CovalentSearchModule,
+  CovalentStepsModule
+} from '@covalent/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +33,7 @@ import { HomeModule } from './home/home.module';
     FlexLayoutModule,
     CovalentLayoutModule,
     CovalentStepsModule,
+    CovalentNotificationsModule,
     AppRoutingModule
   ],
   // providers: [],

@@ -1,5 +1,5 @@
 <td-layout>
-  <td-layout-nav-list color="primary" logo="assets:logo.jpg" toolbarTitle="Austin" navigationRoute="/" opened="false" mode="side">
+  <td-layout-nav-list color="warn" toolbarTitle="Austin" navigationRoute="/" opened="false" mode="side">
     <div td-sidenav-content>
       Sidenav content here
     </div>
@@ -17,10 +17,8 @@
         Posts
       </button>
     </div>
-    <div td-toolbar-content>
-    <mat-menu  x-position="right" #menu="matMenu">
-      <button mat-menu-item>Something soon</button>
-    </mat-menu>
+    <div layout="row" layout-align="start center" td-toolbar-content>
+      <td-search-box placeholder="Search" [showUnderline]="false"></td-search-box>
     </div>
     <router-outlet></router-outlet>
     <td-layout-footer>

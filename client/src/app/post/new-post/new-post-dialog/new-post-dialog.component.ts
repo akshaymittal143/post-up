@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { validate } from 'codelyzer/walkerFactory/walkerFn';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { Post } from '../../../model/post';
 import { PostService } from '../../post.service';
 import { NewPostComponent } from '../new-post.component';
@@ -18,7 +17,8 @@ export class NewPostDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<NewPostComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Post,
-    private postService: PostService
+    private postService: PostService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -28,12 +28,13 @@ export class NewPostDialogComponent implements OnInit {
     });
   }
 
-  reloadAllPost() {
-    this.postService.getPosts();
-  }
-
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  reloadPage() {
+    this.router.navigateByUrl('/posts');
+    console.log('post list page reloaded!!');
   }
 
   addPost() {
@@ -44,7 +45,12 @@ export class NewPostDialogComponent implements OnInit {
       this.postService.createPost(this.newPost.value).subscribe(
         data => {
           this.newPost.reset();
-          this.reloadAllPost();
+          if (data) {
+            this.dialogRef.afterClosed().subscribe(() => {
+              console.log('post was addded!');
+              this.reloadPage();
+            });
+          }
           return true;
         },
         err => console.log(err)

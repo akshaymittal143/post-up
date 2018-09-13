@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostService } from '../post.service';
 
 @Component({
@@ -8,11 +9,18 @@ import { PostService } from '../post.service';
 })
 export class PostListComponent implements OnInit {
   public posts;
-
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
     this.getPosts();
+  }
+
+  reloadPage() {
+    // if (this.router.onSameUrlNavigation) {
+    //   this.ngOnInit();
+    //   console.log('reloading the page!!');
+    // }
+    this.router.navigateByUrl('/posts');
   }
 
   getPosts() {
@@ -24,6 +32,8 @@ export class PostListComponent implements OnInit {
   deletePost(id: number) {
     console.log('post to be deleted:' + id);
     this.postService.deletePost(id);
-    this.getPosts();
+    this.reloadPage();
+
+    // this.reloadPage();
   }
 }
