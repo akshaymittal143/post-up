@@ -42,6 +42,7 @@ public class PostController {
     }
   }
 
+
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public Post create(@RequestBody @Valid Post post) {

@@ -20,6 +20,6 @@ import { MainComponent } from './main/main.component';
     HomeRoutingModule
   ],
   declarations: [HomeComponent, PageNonfoundComponent, MainComponent],
-  exports: [HomeComponent, PageNonfoundComponent]
+  exports: [HomeComponent, PageNonfoundComponent, MainComponent]
 })
 export class HomeModule {}

@@ -28,7 +28,6 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
     PostModule,
     HomeModule,
-    // PostModule,
     MaterialModule,
     FlexLayoutModule,
     CovalentLayoutModule,
