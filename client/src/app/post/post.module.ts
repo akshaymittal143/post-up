@@ -13,10 +13,11 @@ import { PostService } from './post.service';
 import { SearchPostComponent } from './search-post/search-post.component';
 import { MaterialModule } from '../shared/material.module';
 import { PostComponent } from './post.component';
+import { DeletePostComponent } from './delete-post/delete-post.component';
 
 @NgModule({
   imports: [CommonModule, PostRoutingModule, MaterialModule, FormsModule, ReactiveFormsModule],
-  entryComponents: [NewPostComponent, NewPostDialogComponent],
+  entryComponents: [NewPostComponent, NewPostDialogComponent, DeletePostComponent],
   declarations: [
     PostComponent,
     PostListComponent,
@@ -25,7 +26,8 @@ import { PostComponent } from './post.component';
     NewPostDialogComponent,
     EditPostComponent,
     PostDetailsComponent,
-    SearchPostComponent
+    SearchPostComponent,
+    DeletePostComponent
   ],
   exports: [
     PostComponent,
@@ -35,7 +37,8 @@ import { PostComponent } from './post.component';
     NewPostDialogComponent,
     EditPostComponent,
     PostDetailsComponent,
-    SearchPostComponent
+    SearchPostComponent,
+    DeletePostComponent
   ],
   providers: [PostService]
 })

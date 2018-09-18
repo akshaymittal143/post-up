@@ -1,7 +1,9 @@
-<div class="new-post">
-  <button mat-fab (click)="openDialog()" class="fab-bottom-right">
+<div class="cdk-overlay-backdrop-showing">
+  <span>
+  <button mat-fab (click)="openDialog()" class="done">
     <mat-icon>add</mat-icon>
   </button>
+  </span>
   <p *ngIf="title">
     You have added a new Post: <i>{{title}}</i>
   </p>

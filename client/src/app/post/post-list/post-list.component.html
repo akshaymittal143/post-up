@@ -1,57 +1,41 @@
-<div class="list-group">
+<div>
   <div>
-    <mat-toolbar color="primary">
-      <span>
-        <mat-icon>mood</mat-icon>
-      </span>
-      <span class="col-lg-2">Post List!</span>
-      <button mat-icon-button [mat-menu-trigger-for]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-menu x-position="right" #menu="matMenu">
-      <button mat-menu-item>Something soon</button>
-    </mat-menu>
-    <div align="right">
-      <app-new-post></app-new-post>
-    </div>
-    <!--Post List using mat card-->
-    <mat-card *ngFor="let post of posts">
-      <mat-card-header>
-        <mat-card-title>
-          <h1 class="mat-heading">{{post.title}}</h1>
-        </mat-card-title>
-        <mat-card-subtitle>{{post.id}}</mat-card-subtitle>
-      </mat-card-header>
-      <!-- <img matCardImage src="Card wide image source"> -->
-      <mat-card-content>
-        {{post.content}}
-      </mat-card-content>
-      <mat-card-actions align="start">
-        <a mat-raised-button color="primary" [routerLink]="['/', 'edit-post', post.id]">
-          Edit
-        </a>
-        <a mat-raised-button color="primary" [routerLink]="['/', 'view-post', post.id]">
-          View</a>
-        <button (click)="deletePost(post.id)" mat-raised-button color="warn">Delete</button>
-      </mat-card-actions>
-      <!--<mat-card-footer>-->
-      <!--Footer-->
-    <!--</mat-card-footer>-->
-    </mat-card>
-
-    <mat-card>
-      <button mat-button>All</button>
-      <button mat-raised-button>Previous</button>
-      <button mat-raised-button color="primary">Next</button>
-    </mat-card>
-
-    <!-- <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span> -->
+    <app-new-post></app-new-post>
   </div>
 
+  <!--Post List using mat card-->
+  <mat-card *ngFor="let post of posts" class="cdk-global-scrollblock">
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="mat-heading">{{post.title}}</h1>
+      </mat-card-title>
+      <mat-card-subtitle>{{post.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img matCardImage src="Card wide image source"> -->
+    <mat-card-content>
+      {{post.content}}
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <a mat-raised-button color="primary" [routerLink]="['/', 'edit-post', post.id]">
+        Edit
+      </a>
+      <a mat-raised-button color="primary" [routerLink]="['/', 'view-post', post.id]">
+        View</a>
+      <button (click)="deletePost(post.id)" mat-raised-button color="warn">Delete</button>
+    </mat-card-actions>
+    <!--<mat-card-footer>-->
+    <!--Footer-->
+    <!--</mat-card-footer>-->
+  </mat-card>
 
+  <mat-card>
+    <button mat-button>All</button>
+    <button mat-raised-button>Previous</button>
+    <button mat-raised-button color="primary">Next</button>
+  </mat-card>
+  <span class="done">
+    <button mat-fab (click)="getPosts()">
+      <mat-icon>check circle</mat-icon>
+    </button>
+    </span>
 </div>

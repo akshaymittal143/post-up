@@ -1,4 +1,7 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { DeletePostComponent } from '../delete-post/delete-post.component';
 import { PostService } from '../post.service';
 
 @Component({
@@ -9,10 +12,20 @@ import { PostService } from '../post.service';
 export class PostListComponent implements OnInit {
   public posts;
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.getPosts();
+  }
+
+  reloadPage() {
+    this.router.navigateByUrl('/posts');
+    console.log(this.route.url);
   }
 
   getPosts() {
@@ -22,8 +35,16 @@ export class PostListComponent implements OnInit {
   }
 
   deletePost(id: number) {
-    console.log('post to be deleted:' + id);
-    this.postService.deletePost(id);
-    this.getPosts();
+    const dialogRef = this.dialog.open(DeletePostComponent);
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if (result) {
+          this.postService.deletePost(id);
+          console.log('post to be deleted:' + id);
+          this.reloadPage();
+        }
+      },
+      err => console.log('error while deleting' + err)
+    );
   }
 }
