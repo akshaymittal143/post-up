@@ -1,5 +1,7 @@
 package com.backend.akshayproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.CascadeType;
@@ -51,6 +53,7 @@ public class Post {
   @ManyToOne
   @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
   @NotNull
+  @JsonIgnore
   private User user;
 
   @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
