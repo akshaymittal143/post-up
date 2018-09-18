@@ -34,12 +34,14 @@ public class User {
   @Column(name = "email", unique = true, nullable = false)
   @Email(message = "*Please provide a valid Email")
   @NotEmpty(message = "*Please provide an email")
+  @Email(message = "*Please provide an email")
   private String email;
 
   @Column(name = "password", nullable = false)
   @Length(min = 5, message = "*Your password must have at least 5 characters")
   @NotEmpty(message = "*Please provide your password")
   @JsonIgnore
+
   private String password;
 
   @Column(name = "username", nullable = false, unique = true)
