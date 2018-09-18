@@ -56,7 +56,7 @@ public class PostController {
     System.out.println("Update Post with ID = " + id + "...");
     return postRepository.findById(id)
         .map(p -> {
-          p.setContent(post.getContent());
+          p.setBody(post.getBody());
           p.setTitle(post.getTitle());
           return new ResponseEntity(postRepository.save(p), HttpStatus.OK);
         }).orElse(new ResponseEntity(HttpStatus.NOT_FOUND));
