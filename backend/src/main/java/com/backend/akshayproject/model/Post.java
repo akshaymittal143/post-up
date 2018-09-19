@@ -51,8 +51,7 @@ public class Post {
   private Date createDate;
 
   @ManyToOne
-  @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
-  @NotNull
+  @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = true)
   @JsonIgnore
   private User user;
 
