@@ -11,7 +11,9 @@
     "precommit": "run-s format:fix lint",
     "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "predeploy": "firebase use --token $FIREBASE_DEPLOY_KEY $CI_ENVIRONMENT_SLUG",
+    "deploy": "firebase deploy --non-interactive --token $FIREBASE_DEPLOY_KEY"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +31,9 @@
     "@angular/router": "^6.1.0",
     "@covalent/core": "git+https://github.com/Teradata/covalent-nightly.git",
     "@ng-bootstrap/ng-bootstrap": "^3.2.0",
+    "angularfire2": "^5.0.2",
     "core-js": "^2.5.4",
+    "firebase": "^5.5.1",
     "hammerjs": "^2.0.8",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
@@ -43,6 +47,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "firebase-tools": "^4.2.1",
     "husky": "^0.14.3",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
