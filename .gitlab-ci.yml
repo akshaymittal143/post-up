@@ -1,0 +1,21 @@
+image: node:latest
+before_script:
+  - cd client
+  - npm install
+cache:
+  paths:
+    - client/node_modules
+
+stages:
+  - deploy
+
+deploy_development:
+  stage: deploy
+  environment:
+    name: development
+    url: https://akshay-client.firebaseapp.com
+  script:
+    - npm run build
+    - npm run deploy
+  only:
+    - development
